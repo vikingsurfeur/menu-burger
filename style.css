@@ -1,0 +1,374 @@
+/**** THE VIKING SURFEUR SHOW ****/
+
+* , *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    font-family: 'Major Mono Display', monospace;
+    font-weight: bolder;
+    background-color: #B22222;
+}
+
+img {
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 60em;
+    transition: 250ms all;
+}
+
+@media screen and (max-width: 767px) {
+    img {
+        width: 40em;
+    }
+}
+
+/**** HEADER / FOOTER ****/
+
+header,footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3em;
+}
+
+header i{
+    padding: 0.5em;
+}
+
+/**** BURGER ****/
+
+.burger-wrapper {
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.burger {
+    position: absolute;
+    height: 5px;
+    width: 4.5em;
+    border-radius: 2em;
+    background-color: white;
+}
+
+.burger-1 {
+    margin-bottom: 3em;
+    transition: 250ms all;
+}
+
+.burger-2 {
+    width: 2.5em;
+    transition: 250ms all;
+    
+}
+
+.burger-3 {
+    margin-top: 3em;
+    transition: 250ms all;
+}
+
+.burger-4 {
+    margin-top : 10em;
+    opacity: 0;
+}
+
+.burger-wrapper:hover .burger-4 {
+    animation-name: click;
+    animation-delay: 500ms;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes click {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.burger-wrapper:hover .burger-1 {
+    transform: rotate(-45deg);
+    width: 4.7em;
+    border-radius: 0 2em 2em 0;
+}
+
+.burger-wrapper:hover .burger-2 {
+    margin-left: 10em;
+    opacity: 0;
+}
+
+.burger-wrapper:hover .burger-3 {
+    transform: rotate(45deg);
+    width: 4.7em;
+    border-radius: 0 2em 2em 0;
+}
+
+/**** NAV ****/
+
+nav {
+    position: fixed;
+    height: 100vh;
+    width: 25%;
+    top: 0;
+    right: -25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    z-index: 4;
+    transition: 400ms ease-in-out;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2em 2em 0;
+}
+
+@media screen and (max-width: 991px) {
+    nav {
+        width: 50%;
+        right: -50%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    nav {
+        width: 75%;
+        right: -75%;
+    }
+}
+
+li {
+    padding: 4em 0;
+    margin-right: 2em;
+    text-align: right;
+    list-style: none;
+}
+
+.nav-menu a {
+    position: relative;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    color: black;
+    text-decoration: none;
+    transition: 250ms all;
+}
+
+.nav-menu a::before {
+    position: absolute;
+    bottom: 43%;
+    left: 0;
+    content: "";
+    height: 1px;
+    width: 0;
+    background-color: #B22222;
+    transition: 250ms all;
+}
+
+.nav-menu a:hover::before {
+    width: 100%;
+}
+
+.separator {
+    width: 50%;
+    height: 2px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+.nav-social ul {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4em 0 2em;
+}
+
+.nav-social li {
+    display: inline;
+    margin: 0;
+}
+
+.nav-social a:hover i {
+    color: #B22222;
+    animation-name: pulse;
+    animation-duration: 750ms;
+    animation-iteration-count: 2;
+    animation-direction: reverse;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    75% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+/* ADD CLOSE NAV */
+
+.close-nav { 
+    right: 0;
+    box-shadow: 0px 0px 200px 2px rgba(0, 0, 0, 1);
+}
+
+/**** COLOR BLINDER *****/
+
+.color-blinder {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    transition: 400ms ease-in-out;
+}
+
+.color-blinder-show {
+    right: 0;
+}
+
+/**** CLOSE TOGGLER ****/
+
+.close-toggle {
+    cursor: pointer;
+    padding: 2em;
+    color: black;
+    transition: 500ms all;
+}
+
+.close-toggle:hover {
+    color: #B22222;
+    transform: scale(1.2);
+    animation-name: shake;
+    animation-duration: 750ms;
+    animation-delay: 500ms;
+    animation-iteration-count: 1;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-15deg);
+    }
+    10% {
+        transform: rotate(15deg);
+    }
+    20% {
+        transform: rotate(-15deg);
+    }
+    30% {
+        transform: rotate(15deg);
+    }
+    40% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    60% {
+        transform: rotate(-15deg);
+    }
+    60% {
+        transform: rotate(15deg);
+    }
+    70% {
+        transform: rotate(-15deg);
+    }
+    80% {
+        transform: rotate(15deg);
+    }
+    90% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(15deg);
+    }
+}
+
+/**** MAIN ****/
+
+main {
+    position: relative;
+    text-align: center;
+}
+
+h1 {
+    position: relative;
+    padding: 2em 0;
+    font-size: clamp(3rem, 4vw, 5rem);
+    font-weight: bold;
+    z-index: 2;
+    animation-name: glow;
+    animation-delay: 1000ms;
+    animation-duration: 250ms;
+    animation-iteration-count: 3;
+    animation-direction: alternate-reverse;
+}
+
+h1:hover {
+    
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px yellow;
+    }
+    15% {
+        text-shadow: 10px 0 2px  yellow;
+    }
+    30% {
+        text-shadow: 0 0 10px yellow;
+    }
+    35%{
+        text-shadow: 0 10px 2px green;
+    }
+    50% {
+        text-shadow: 0 0 10px yellow;
+    }
+    65%{
+        text-shadow: -10px 0 2px  red;
+    }
+    95% {
+        text-shadow: 0 0 10px yellow;
+    }
+    100% {
+        text-shadow: 0 -10px 2px blue;
+    }
+
+}
+
+/**** FOOTER ****/
+
+footer :nth-child(2) {
+    text-align: right;
+}
